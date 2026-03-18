@@ -73,7 +73,7 @@ const Index = () => {
 
           <div className="mb-6 sm:mb-8 flex items-center justify-center gap-2 text-foreground font-semibold opacity-0 animate-fade-in-up" style={{ animationDelay: "0.7s" }}>
             <Calendar size={18} className="text-primary" />
-            <span className="text-sm sm:text-base font-bold">14th April, 2026</span>
+            <span className="text-sm sm:text-base font-bold">16th April, 2026</span>
           </div>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 opacity-0 animate-fade-in-up w-full sm:w-auto" style={{ animationDelay: "0.8s" }}>
