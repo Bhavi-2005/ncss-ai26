@@ -24,7 +24,7 @@ const stats = [
   { value: "25+", label: "Years of Excellence" },
   { value: "1000+", label: "Alumni Network" },
   { value: "50+", label: "Research Papers" },
-  { value: "14 Apr", label: "Conference Date" },
+  { value: "16 Apr", label: "Conference Date" },
 ];
 
 const Index = () => {
