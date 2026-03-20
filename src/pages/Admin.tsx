@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { collection, getDocs } from "firebase/firestore";
-import { db } from "../lib/firebase";
+import { signOut, onAuthStateChanged } from "firebase/auth";
+import { db, auth } from "../lib/firebase";
 import { LogOut, FileSpreadsheet, Download, Eye, FileText } from "lucide-react";
 import { toast } from "sonner";
 import * as XLSX from "xlsx";
@@ -13,6 +14,18 @@ export default function AdminDashboard() {
   const navigate = useNavigate();
 
   useEffect(() => {
+    if (localStorage.getItem("admin") !== "true") {
+      navigate("/admin-login");
+      return;
+    }
+
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (!user || user.email !== "adminncssai26@gmail.com") {
+        localStorage.removeItem("admin");
+        navigate("/admin-login");
+      }
+    });
+
     const fetchRegistrations = async () => {
       try {
         const querySnapshot = await getDocs(collection(db, "registrations"));
@@ -38,12 +51,19 @@ export default function AdminDashboard() {
     };
     
     fetchRegistrations();
+
+    return () => unsubscribe();
   }, [navigate]);
 
-  const handleLogout = () => {
-    localStorage.removeItem("adminLoggedIn");
-    toast.success("Successfully logged out");
-    navigate("/admin-login");
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+      localStorage.removeItem("admin");
+      toast.success("Successfully logged out");
+      navigate("/admin-login");
+    } catch (error) {
+      toast.error("Failed to log out");
+    }
   };
 
   const exportToExcel = () => {

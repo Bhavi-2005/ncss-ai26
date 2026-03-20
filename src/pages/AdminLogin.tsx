@@ -3,37 +3,49 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 import { Shield, User, Lock } from "lucide-react";
 
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "@/lib/firebase";
+
 const AdminLogin = () => {
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
     // Redirect if already logged in
-    if (localStorage.getItem("adminLoggedIn") === "true") {
+    if (localStorage.getItem("admin") === "true") {
       navigate("/admin");
     }
   }, [navigate]);
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    const envUsername = import.meta.env.VITE_ADMIN_USERNAME;
-    const envPassword = import.meta.env.VITE_ADMIN_PASSWORD;
+    try {
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        email.trim(),
+        password
+      );
 
-    // Simulate small delay for UX
-    setTimeout(() => {
-      if (username === envUsername && password === envPassword) {
-        localStorage.setItem("adminLoggedIn", "true");
+      const user = userCredential.user;
+
+      // Allow only specific admin email
+      if (user.email === "adminncssai26@gmail.com") {
+        localStorage.setItem("admin", "true");
         toast.success("Successfully logged in as admin");
         navigate("/admin");
       } else {
-        toast.error("Invalid username or password");
-        setIsSubmitting(false);
+        toast.error("Not authorized as admin");
       }
-    }, 500);
+    } catch (error: any) {
+      console.error("Firebase login error:", error);
+      toast.error(error.code ? `Error: ${error.code}` : "Invalid email or password");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const inputClass =
@@ -63,17 +75,17 @@ const AdminLogin = () => {
         <form onSubmit={handleLogin} className="gradient-card rounded-2xl p-8 glow-border space-y-5 bg-background/50 backdrop-blur-sm shadow-xl">
           <div className="space-y-4">
             <div className="relative">
-              <label className={labelClass} htmlFor="username">Username</label>
+              <label className={labelClass} htmlFor="email">Email</label>
               <div className="relative">
                 <div className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground">
                   <User size={18} />
                 </div>
                 <input
-                  id="username"
-                  type="text"
-                  placeholder="Enter admin username"
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
+                  id="email"
+                  type="email"
+                  placeholder="Enter admin email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   className={inputClass}
                   required
                 />

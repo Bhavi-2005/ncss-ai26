@@ -412,7 +412,7 @@ const Register = () => {
               <div className="flex flex-col items-center justify-center gap-4 mt-2">
                 <div className="flex items-center justify-center p-4 rounded-2xl border-2 border-border bg-white shadow-sm">
                   <img
-                    src={`https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=upi://pay?pa=bhavishyapriyadarshini@okicici&am=${totalAmount}&cu=INR`}
+                    src={`https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=${encodeURIComponent(`upi://pay?pa=bhavishyapriyadarshini@okicici&am=${totalAmount}&cu=INR`)}`}
                     alt={`Payment QR Code for Rs. ${totalAmount}`}
                     className="h-40 w-40 sm:h-48 sm:w-48 object-contain"
                   />

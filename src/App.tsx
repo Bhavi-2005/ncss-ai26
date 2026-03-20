@@ -15,7 +15,7 @@ import NotFound from "./pages/NotFound";
 import { Navigate } from "react-router-dom";
 
 const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
-  const isAdmin = localStorage.getItem("adminLoggedIn") === "true";
+  const isAdmin = localStorage.getItem("admin") === "true";
   return isAdmin ? <>{children}</> : <Navigate to="/admin-login" replace />;
 };
 
