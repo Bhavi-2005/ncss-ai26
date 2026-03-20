@@ -4,8 +4,8 @@ import { MapPin } from "lucide-react";
 const Contact = () => {
   const studentCoordinators = [
     { name: "M. Dharaneesh", phone: "9842072615" },
-    { name: "J. Anto", phone: "9345155298" },
-    { name: "S. Suvil", phone: "7603867162" },
+    { name: "J. Anto", phone: "8270919868" },
+    { name: "S. Suvil", phone: "7603867762" },
     { name: "S. Navya", phone: "8072251585" },
     { name: "S. Niranjan", phone: "7871264267" },
     { name: "S. Charan Tej", phone: "9345155298" },
@@ -116,7 +116,7 @@ const Contact = () => {
             </a>
           </div>
 
-          
+
         </div>
 
         {/* Back to Home */}
