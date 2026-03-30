@@ -1,73 +1,201 @@
-# Welcome to your Lovable project
+# 🌐 NCFSS AI Conference Hub
 
-## Project info
+A modern web application built for the **National Conference on Free/Libre and Open Source Software (NCFSS)** with a focus on AI themes.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+This platform serves as the central hub for:
+- Conference details
+- Participant registrations
+- Paper submissions
+- Admin-based event management
 
-## How can I edit this code?
+---
 
-There are several ways of editing your application.
+## 🚀 Features
 
-**Use Lovable**
+### 🎯 Interactive Landing Pages
+- Dedicated pages for:
+  - `/guidelines`
+  - `/topics`
+  - `/contact`
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+### 📝 Participant Registration System
+- Complete registration workflow
+- Supports:
+  - Offline participation types
+  - Paper topic selection
 
-Changes made via Lovable will be committed automatically to this repo.
+### 📧 Automated Email Confirmations
+- Integrated with **EmailJS**
+- Sends confirmation emails upon successful registration
 
-**Use your preferred IDE**
+### 🔐 Firebase Integration
+- Secure admin authentication via Firebase Auth
+- Firestore database to store all registration data
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### 📊 Admin Dashboard
+- Secure admin-only access
+- Features include:
+  - View all registrations
+  - Sort and manage entries
+  - View uploaded abstracts (PDF)
+  - Check payment screenshots
+  - Export data (Excel)
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### 🎨 Modern UI/UX
+- Fully responsive and scalable design using:
+  - Tailwind CSS
+  - Shadcn UI
+  - Radix UI
 
-Follow these steps:
+---
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+## 🛠️ Tech Stack
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
-
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
+### Frontend
+- React 18
 - Vite
 - TypeScript
-- React
-- shadcn-ui
+
+### Styling
 - Tailwind CSS
+- tailwindcss-animate
+- class-variance-authority
+- clsx
 
-## How can I deploy this project?
+### UI Components
+- Shadcn UI
+- Radix UI
+- Lucide React (Icons)
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+### State Management & Forms
+- React Hook Form
+- Zod (Schema validation)
 
-## Can I connect a custom domain to my Lovable project?
+### Backend / BaaS
+- Firebase (Authentication & Firestore)
 
-Yes, you can!
+### Email Service
+- EmailJS (@emailjs/browser)
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+### Routing
+- React Router v6
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+### Utilities
+- date-fns (Date formatting)
+- recharts (Dashboard charts)
+- xlsx (Data export)
+
+## 📁 Project Structure
+
+
+src/
+├── assets/ # Static assets (images, logos)
+├── components/ # Reusable UI components
+├── hooks/ # Custom hooks (e.g., toast)
+├── lib/ # Utilities & Firebase config
+├── pages/ # Core pages
+│ ├── Admin.tsx
+│ ├── AdminLogin.tsx
+│ ├── Contact.tsx
+│ ├── Guidelines.tsx
+│ ├── Index.tsx
+│ ├── Register.tsx
+│ ├── RegistrationSuccess.tsx
+│ ├── Topics.tsx
+│ └── NotFound.tsx
+├── App.css
+├── index.css
+└── main.tsx
+
+## ⚙️ Configure Environment Variables
+
+Create a `.env` file in the root directory:
+
+```env
+# Firebase Configuration
+VITE_FIREBASE_API_KEY=your_api_key
+VITE_FIREBASE_AUTH_DOMAIN=your_auth_domain
+VITE_FIREBASE_PROJECT_ID=your_project_id
+VITE_FIREBASE_STORAGE_BUCKET=your_storage_bucket
+VITE_FIREBASE_MESSAGING_SENDER_ID=your_sender_id
+VITE_FIREBASE_APP_ID=your_app_id
+
+# EmailJS Configuration
+VITE_EMAILJS_SERVICE_ID=your_service_id
+VITE_EMAILJS_TEMPLATE_ID=your_template_id
+VITE_EMAILJS_PUBLIC_KEY=your_public_key
+
+Here is your **section in one clean, properly formatted Markdown copy-paste block** 👇
+
+````md id="run-build-deploy"
+## ▶️ Run Development Server
+
+```bash
+npm run dev
+````
+
+App will run at:
+
+👉 [http://localhost:5173](http://localhost:5173)
+
+---
+
+## 🏗️ Build for Production
+
+```bash
+npm run build
+```
+
+* Outputs optimized files into `/dist`
+* Ready for deployment (Netlify, Vercel, etc.)
+
+---
+
+## 🌍 Deployment
+
+You can deploy using:
+
+* Netlify
+* Vercel
+* Firebase Hosting
+
+---
+
+## 📌 Future Enhancements
+
+* Online payment integration
+* Real-time notifications
+* Role-based admin access
+* Analytics dashboard improvements
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome!
+
+1. Fork the repo
+2. Create a new branch
+3. Commit your changes
+4. Open a Pull Request
+
+---
+
+## 📄 License
+
+This project is licensed under the **MIT License**.
+
+---
+
+## 👩‍💻 Author
+
+**Bhavishya Priyadarshini V**
+Aspiring Full-Stack Developer 🚀
+
+---
+
+⭐ If you found this project useful, don't forget to star the repo!
+
+```
+```
+
